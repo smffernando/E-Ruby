@@ -1,0 +1,80 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>View Request</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card>
+
+    <ion-item *ngIf="pageData.startDate != ''">
+      <ion-label left>Start Date</ion-label>
+      <ion-label right>{{pageData.startDate}}</ion-label>
+    </ion-item>
+
+    <ion-item  *ngIf="pageData.endDate != ''">
+      <ion-label left>End Date</ion-label>
+      <ion-label right>{{pageData.endDate}}</ion-label>
+    </ion-item>
+
+    <ion-item *ngIf="pageData.allocationType != ''">
+      <ion-label left>Allocation Type</ion-label>
+      <ion-label right>{{pageData.allocationType}}</ion-label>
+    </ion-item>
+
+    <ion-item *ngIf="pageData.bookingType != ''">
+      <ion-label left>Booking Type</ion-label>
+      <ion-label right>{{pageData.bookingType}}</ion-label>
+    </ion-item>
+
+    <ion-item *ngIf="pageData.projectRole != ''">
+      <ion-label left>Project Role</ion-label>
+      <ion-label right>{{pageData.pr}}</ion-label>
+    </ion-item>
+
+    <ion-item *ngIf="pageData.allocation != '' && pageData.allocation != null">
+      <ion-label left>Allocation</ion-label>
+      <ion-label right>{{pageData.allocation}}%</ion-label>
+    </ion-item>
+
+    <ion-item *ngIf="pageData.rate != ''  && pageData.rate != null">
+      <ion-label left>Rate</ion-label>
+      <ion-label right>{{pageData.rate}}%</ion-label>
+    </ion-item>
+
+    <ion-item *ngIf="pageData.basedLocation != ''">
+      <ion-label left>Based Location</ion-label>
+      <ion-label right>{{pageData.bl}}</ion-label>
+    </ion-item>
+
+    <ion-item *ngIf="pageData.expertise != ''">
+      <ion-label left>Expertise</ion-label>
+      <ion-label right>{{pageData.ex}}</ion-label>
+    </ion-item>
+
+    <ion-item *ngIf="pageData.skills != ''">
+
+      <ion-label ><span style="color: #2d2d2d">Skills</span></ion-label>
+
+      <ion-select multiple="true"  >
+        <ion-option *ngFor="let skill of pageData.skills" value="skill" selected="true" [disabled]="true">{{skill}}</ion-option>
+      </ion-select>
+
+    </ion-item>
+
+    <div padding>
+      <button  ion-button color="dark" outline (click)="goBack()">Go Back</button>
+    </div>
+
+
+  </ion-card>
+
+
+
+
+</ion-content>

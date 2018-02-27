@@ -1,0 +1,60 @@
+<ion-header class="blur">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+
+    <ion-item>
+      <h2>User Role : {{profile.role}}</h2><hr>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="person" item-center></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      <h5 item-start>First Name :</h5>
+      <h5 item-end>{{profile.firstName}}</h5>
+    </ion-item>
+    <ion-item>
+      <h5 item-start>Full Name :</h5>
+      <h5 item-end>{{profile.fullName}}</h5>
+    </ion-item>
+
+    <ion-item>
+      <h5 item-start>Email :</h5>
+      <h5 item-end>{{profile.email}}</h5>
+    </ion-item>
+
+    <ion-item>
+      <h5 item-start>ID :</h5>
+      <h5 item-end>{{profile.eId}}</h5>
+    </ion-item>
+
+    <!--<ion-card-content>-->
+      <!--<p>Use following Logout button for login out from current account.</p>-->
+    <!--</ion-card-content>-->
+
+    <ion-item>
+      <div item-end>
+        <button ion-button icon-left small (click)="logout()" color="dark" outline>
+          <div>Log Out</div>
+        </button>
+      </div>
+      <div item-start>
+        <button ion-button icon-left small (click)="editProfile()" color="dark" outline>
+          <div>Edit Profile</div>
+        </button>
+      </div>
+    </ion-item>
+
+  </ion-card>
+
+</ion-content>

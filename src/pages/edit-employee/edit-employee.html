@@ -1,0 +1,117 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Edit Employee</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form #f="ngForm" (ngSubmit)="addFormData(f.value)">
+
+    <ion-item>
+      <ion-label fixed>Employee ID</ion-label>
+      <ion-input type="text" disabled = 'true' name="Id" [(ngModel)]="pageData.Id" ngControl="Id" required ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Employee Full Name</ion-label>
+      <ion-input type="text" name="FullName" [(ngModel)]="pageData.FullName"  ngControl="FullName" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>First Name</ion-label>
+      <ion-input type="text" name="FirstName" [(ngModel)]="pageData.FirstName" ngControl="FirstName" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Last Name</ion-label>
+      <ion-input type="text" name="LastName" [(ngModel)]="pageData.LastName" ngControl="LastName" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Address</ion-label>
+      <ion-input type="text" name="Address" [(ngModel)]="pageData.Address" ngControl="Address" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Email</ion-label>
+      <ion-input type="text" name="Email" [(ngModel)]="pageData.Email" ngControl="Email" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>NIC Number</ion-label>
+      <ion-input type="text" name="NIC" [(ngModel)]="pageData.NIC" ngControl="NIC" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Experience</ion-label>
+      <ion-input type="text" name="Experience" [(ngModel)]="pageData.Experience" ngControl="Experience" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Telephone Number</ion-label>
+      <ion-input type="number" name="Telephone" maxlength="10" [(ngModel)]="pageData.Telephone" ngControl="Telephone" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Mobile</ion-label>
+      <ion-input type="number" name="Mobile" [(ngModel)]="pageData.Mobile" ngControl="Mobile" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Qualifications</ion-label>
+      <ion-input type="text" name="Qualifications" [(ngModel)]="pageData.Qualifications" ngControl="Qualifications" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Birth Day</ion-label>
+      <ion-datetime displayFormat="YYYY MMM DD" min="1900" max="2020-10-31"
+                    pickerFormat="YYYY:MMM:DD" name="BirthDay" type="text"
+                    [(ngModel)]="pageData.BirthDay" ngControl="BirthDay"  required></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Gender</ion-label>
+      <ion-select  name="Gender" [(ngModel)]="pageData.Gender" ngControl="Gender" required>
+        <ion-option  value="male">Male</ion-option>
+        <ion-option  value="female">Female</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+        <ion-label fixed>Skills</ion-label>
+        <ion-select name="Skills" [(ngModel)]="pageData.Skills" ngControl="Skills"  multiple="true" required>
+          <ion-option value="Java" selected="true">Java</ion-option>
+          <ion-option value="C">C</ion-option>
+          <ion-option value="Angular">Angular</ion-option>
+        </ion-select>
+      </ion-item>
+
+    <ion-item>
+      <ion-label fixed>State</ion-label>
+      <ion-select right name="State" [(ngModel)]="pageData.State" ngControl="State" required>
+        <ion-option  value="Married">Married</ion-option>
+        <ion-option  value="Unmarried">Unmarried</ion-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label fixed>Visa Availability</ion-label>
+      <ion-select  name="Visa" [(ngModel)]="pageData.Visa" ngControl="Visa"  required>
+        <ion-option  value="Available">Available</ion-option>
+        <ion-option  value="Not Available">Not Available</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <div padding>
+      <button block type="submit" [disabled]="!f.valid" ion-button color="dark" outline>
+        <span padding-fixed="12px">Edit</span>
+      </button>
+    </div>
+  </form>
+</ion-content>

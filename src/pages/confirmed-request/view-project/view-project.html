@@ -1,0 +1,68 @@
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>View Project</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <div padding>
+    Project Name : {{projectDetails.projectName}}
+  </div>
+
+  <ion-card >
+
+    <ion-card-header>
+      Resource Request
+      <hr>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-list>
+        <ion-item *ngFor="let item of projectDetails.requestData;let i = index" >
+          <h4 item-start>No.{{i + 1}}</h4>
+          <button ion-button color="dark" outline  (click)="onClickView(item)" item-end>View</button>
+          <button ion-button color="dark" outline  (click)="onClickAdd(item,i)" item-end>Add Employee</button>
+        </ion-item>
+
+      </ion-list>
+
+    </ion-card-content>
+
+  </ion-card>
+
+
+  <ion-card *ngIf="createdRequests.length>0">
+
+    <ion-card-header>
+      Filled requests<hr>
+    </ion-card-header>
+
+
+    <ion-card-content>
+    <ion-list>
+
+    <ion-item *ngFor="let item of createdRequests;let i = index" >
+    <h4 item-start>No.{{i + 1}}</h4>
+    <button ion-button color="dark" outline  (click)="onClickEditOnFilled(item , i)" item-end>Edit</button>
+    <!--<button ion-button color="dark" outline  (click)="onClickAdd(item,i)" item-end>Add Employee</button>-->
+    <!--<button ion-button color="danger" (click)="onDelete(item)" item-end> <ion-icon name="trash"></ion-icon></button>-->
+    </ion-item><br><hr>
+
+
+      <ion-item>
+      <button [disabled]="!showSendBtn" ion-button color="dark" outline (click)="onSendRequest()" item-end>Send</button>
+      </ion-item>
+
+    </ion-list>
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>

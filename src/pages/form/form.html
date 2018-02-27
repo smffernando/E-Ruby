@@ -1,0 +1,135 @@
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Send Request</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding >
+
+ <div class="row" padding>
+   <span>Project Name : {{initialPageData.projectName}}</span>
+ </div>
+
+  <form #f="ngForm" (ngSubmit)="addFormData(f.value)">
+
+    <ion-item>
+      <ion-label left>Start Date</ion-label>
+      <ion-datetime displayFormat="YYYY MMM DD" min="2000" max="2020-10-31" pickerFormat="YYYY:MMM:DD" name="startDate" type="text" [(ngModel)]="frmObj.startDate" required></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label left>End Date</ion-label>
+      <ion-datetime displayFormat="YYYY MMM DD" min="2000" max="2020-10-31" pickerFormat="YYYY:MMM:DD" name="endDate" type="text" [(ngModel)]="frmObj.endDate" required></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label left>Allocation Type</ion-label>
+      <ion-select  name="allocationType" [(ngModel)]="frmObj.allocationType" required>
+        <ion-option  value="Billable" >Billable</ion-option>
+        <ion-option  value="Non-Billable">Non-Billable</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label left>Booking Type</ion-label>
+      <ion-select  name="bookingType" [(ngModel)]="frmObj.bookingType" required>
+        <ion-option  value="Confirmed">Confirmed</ion-option>
+        <ion-option  value="Soft">Soft</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label left>Project Role</ion-label>
+      <ion-select  name="projectRole" [(ngModel)]="frmObj.projectRole" required>
+        <ion-option *ngFor="let role of appConfig.projctRoles" value="{{role.value}}">{{role.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label left>Allocation(%)</ion-label>
+      <ion-input type="number" name="allocation" [(ngModel)]="frmObj.allocation" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label left>Rate</ion-label>
+      <ion-input type="number" name="rate" [(ngModel)]="frmObj.rate" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label left>Based Location</ion-label>
+      <ion-select  name="basedLocation" [(ngModel)]="frmObj.basedLocation" required>
+        <ion-option *ngFor="let role of appConfig.basedlocations" value="{{role.value}}">{{role.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label left>Expertise</ion-label>
+      <ion-select  name="expertise" [(ngModel)]="frmObj.expertise" required>
+        <ion-option *ngFor="let role of appConfig.expertise" value="{{role.value}}" >{{role.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>Skills</ion-label>
+        <ion-select name="skills" [(ngModel)]="frmObj.skills"  multiple="true" required>
+          <ion-option value="Java" selected="true">Java</ion-option>
+          <ion-option value="C">C</ion-option>
+          <ion-option value="Angular">Angular</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <div padding>
+      <button block type="submit" [disabled]="!f.valid" ion-button color="dark"><ion-icon name="person-add" left></ion-icon><span padding-left="12px">Add</span></button>
+    </div>
+
+  </form>
+
+
+  <!--<ion-list>-->
+    <!--<button ion-item *ngFor="let item of itemList" (click)="onClickView(item)">-->
+      <!--<ion-icon name="person" item-start></ion-icon>-->
+      <!--{{item.projectRole}}-->
+      <!--<div class="item-note" item-end>-->
+        <!--{{item.startDate}}-->
+      <!--</div>-->
+    <!--</button>-->
+  <!--</ion-list>-->
+
+  <ion-card *ngIf="sendRequestFormData.length>0">
+
+    <ion-card-header>
+        Request Form
+      <hr>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-list>
+
+        <ion-item *ngFor="let item of sendRequestFormData" >
+          <h4 item-start>{{item.projectRole}}</h4>
+          <button ion-button color="secondary"  (click)="onClickView(item)" item-end>View</button>
+          <button ion-button color="danger" (click)="onDelete(item)" item-end> <ion-icon name="trash"></ion-icon></button>
+        </ion-item>
+
+        <hr>
+
+        <ion-item>
+          <button ion-button color="secondary" (click)="onSendRequest()" item-end>Send Request</button>
+        </ion-item>
+
+      </ion-list>
+
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>
+
+

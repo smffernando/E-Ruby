@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Assign Role For Users</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card>
+
+    <ion-item>
+      <ion-label fixed>Employee ID</ion-label>
+      <ion-input type="text" disabled = 'true' [(ngModel)]="pageData.eId"  required ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Full Name</ion-label>
+      <ion-input type="text" disabled = 'true' [(ngModel)]="pageData.fullName"  required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Select User Role</ion-label>
+      <ion-select  name="userRole" [(ngModel)]="pageData.roleId" required>
+        <ion-option *ngFor="let role of appConfig.user_roles_array" value="{{role.value}}">{{role.name}}</ion-option>
+      </ion-select>
+    </ion-item><br>
+
+    <ion-item>
+      <button ion-button item-end small (click)="roleChange()" color="dark" outline>
+        <div>Change Role</div>
+      </button>
+    </ion-item>
+
+  </ion-card>
+
+</ion-content>

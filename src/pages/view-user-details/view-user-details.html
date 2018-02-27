@@ -1,0 +1,51 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>View User Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form [formGroup]="signUpForm" (ngSubmit)="editFunc()">
+
+    <ion-item>
+      <ion-label fixed>Employee ID</ion-label>
+      <ion-input type="text" disabled = 'true' formControlName="eId"  required ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>User Name</ion-label>
+      <ion-input type="text" disabled = 'true' formControlName="userName" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Full Name</ion-label>
+      <ion-input type="text"  formControlName="fullName"   required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>First Name</ion-label>
+      <ion-input type="text" formControlName="firstName"  required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Last Name</ion-label>
+      <ion-input type="text"  formControlName="lastName"  required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Email</ion-label>
+      <ion-input type="text" formControlName="email" required></ion-input>
+    </ion-item>
+
+    <div padding>
+      <button block type="submit" ion-button color="dark" outline>
+        <span padding-fixed="12px">Edit</span>
+      </button>
+    </div>
+  </form>
+</ion-content>

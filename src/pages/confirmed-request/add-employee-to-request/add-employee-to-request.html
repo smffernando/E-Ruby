@@ -1,0 +1,93 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title><span *ngIf="isView">View Resourse</span><span *ngIf="!isView">Add Employee</span></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <form #f="ngForm" (ngSubmit)="onClickAdd(f.value)">
+
+    <ion-item *ngIf="!isView">
+      <ion-label>
+        Project Name
+      </ion-label>
+      <ion-input type="text" name="projectName" [(ngModel)]="pageData.projectName" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label left>
+        Project Role
+      </ion-label>
+      <ion-input type="text" name="role" [disabled]="isView" [(ngModel)]="pageData.pr" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label left>
+        Employee ID
+      </ion-label>
+      <ion-input type="text" name="empId" [disabled]="isView" [(ngModel)]="pageData.empId" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label left>Start Date</ion-label>
+      <ion-datetime displayFormat="YYYY MMM DD" min="2000" max="2020-10-31" [disabled]="isView" [(ngModel)]="pageData.startDate" pickerFormat="YYYY:MMM:DD" name="startDate" type="text" required></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label left>End Date</ion-label>
+      <ion-datetime displayFormat="YYYY MMM DD" min="2000" max="2020-10-31" [disabled]="isView" [(ngModel)]="pageData.endDate" pickerFormat="YYYY:MMM:DD" name="endDate" type="text" required></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label left>Type</ion-label>
+      <ion-select  name="type"  [disabled]="isView" [(ngModel)]="pageData.type" required>
+        <ion-option  value="Internal" >Internal</ion-option>
+        <ion-option  value="External">External</ion-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label left>Expertise</ion-label>
+      <ion-select  name="expertise" [disabled]="isView" [(ngModel)]="pageData.expertise" required>
+        <ion-option *ngFor="let role of appConfig.EXPERTISE_FOR_ASSIGN" value="{{role.value}}" >{{role.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>Skills</ion-label>
+        <ion-select name="skills" [disabled]="isView" [(ngModel)]="pageData.skills" multiple="true" required>
+          <ion-option value="Java">Java</ion-option>
+          <ion-option value="C">C</ion-option>
+          <ion-option value="Angular">Angular</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-item>
+      <ion-label left>Allocation Type</ion-label>
+      <ion-select  name="allocationType" [disabled]="isView" [(ngModel)]="pageData.allocationType" required>
+        <ion-option value="Billable" >Billable</ion-option>
+        <ion-option value="Non-Billable">Non-Billable</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <div *ngIf="!isView">
+      <div padding *ngIf="identityDetails.mode === 'add'">
+        <button block type="submit" [disabled]="!f.valid" ion-button color="dark"><ion-icon name="person-add" left></ion-icon><span padding-left="12px">Add</span></button>
+      </div>
+      <div padding *ngIf="identityDetails.mode === 'view'">
+        <button block type="submit" [disabled]="!f.valid" ion-button color="dark"><span padding-left="12px">Edit</span></button>
+      </div>
+    </div>
+
+  </form>
+
+
+</ion-content>

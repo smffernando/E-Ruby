@@ -1,0 +1,63 @@
+<!--
+  Generated template for the SearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Search</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+
+    <ion-list>
+
+      <ion-item >
+        <ion-label fixed>By Project Name:</ion-label>
+        <ion-input type="text" [(ngModel)]="search.byProjectName"></ion-input>
+      </ion-item>
+
+      <ion-item >
+        <ion-label fixed>By Time (From) :</ion-label>
+        <ion-datetime displayFormat="YYYY MMM DD" min="1900" max="2020-10-31"
+                      pickerFormat="YYYY:MMM:DD" type="text"
+                      [(ngModel)]="search.byDate.from" ></ion-datetime>
+      </ion-item>
+
+      <ion-item >
+        <ion-label fixed>By Time (To) :</ion-label>
+        <ion-datetime displayFormat="YYYY MMM DD" min="1900" max="2020-10-31"
+                      pickerFormat="YYYY:MMM:DD" type="text"
+                      [(ngModel)]="search.byDate.to" ></ion-datetime>
+      </ion-item>
+
+      <ion-item >
+        <ion-label fixed>By Skills</ion-label>
+        <ion-select name="Skills" [(ngModel)]="search.bySkills"  multiple="true" required>
+          <ion-option value="Java" selected="true">Java</ion-option>
+          <ion-option value="C">C</ion-option>
+          <ion-option value="Angular">Angular</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <div padding>
+        <button block type="button" ion-button color="dark" outline (click)="SearchProject()">
+          <span padding-left="12px">Search</span>
+        </button>
+      </div>
+
+    </ion-list>
+
+  </ion-card>
+
+
+</ion-content>

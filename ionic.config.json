@@ -1,0 +1,8 @@
+{
+  "name": "Project Management",
+  "app_id": "f30915c8",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
